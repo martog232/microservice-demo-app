@@ -6,6 +6,7 @@ import com.example.carservice.mapper.CarMapper;
 import com.example.carservice.web.model.CarRespModel;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,11 +14,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CarServiceImpl implements CarService {
 
-    private CarRepository carRepository;
-    private CarMapper carMapper;
+    private final CarRepository carRepository;
+    private final CarMapper carMapper;
 
     @Override
     public List<CarRespModel> findAll() {
@@ -29,7 +30,7 @@ public class CarServiceImpl implements CarService {
         Optional<Car> car = carRepository.findById(id);
         if (car.isPresent()) {
             return carMapper.mapToCarRespModel(car.get());
-        } else throw new EntityNotFoundException("Car with id " + id + " not found");
+        } else throw new EntityNotFoundException("Car with id %d not found".formatted(id));
     }
 
     @Override

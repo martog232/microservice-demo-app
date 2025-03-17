@@ -25,7 +25,7 @@ public class UserController {
             User user = userService.findById(id);
             return ResponseEntity.ok(user);
         } catch (EntityNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(STR."User with id \{id} not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User with id %d not found".formatted(id));
         }
     }
 
