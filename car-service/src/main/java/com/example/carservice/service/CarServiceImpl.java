@@ -5,7 +5,6 @@ import com.example.carservice.data.repository.CarRepository;
 import com.example.carservice.mapper.CarMapper;
 import com.example.carservice.web.model.CarRespModel;
 import jakarta.persistence.EntityNotFoundException;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
